@@ -18,6 +18,7 @@ import java.util.List;
 class Solution2 {
     public int longestSubarray(int[] nums) {
         int count = 0;
+        // 将连续的1加起来，简化数组
         List<Integer> list = new ArrayList<Integer>();
         for(int i = 0; i < nums.length; i++){
             if(nums[i] == 1){
@@ -39,6 +40,7 @@ class Solution2 {
 
 
         int max = 0;
+        // 处理全为1的这种情况，需要强制删除1个
         if(list.size() == 1 && list.get(0) == nums.length){
             for(Integer k: list){
                 max += k;
@@ -46,12 +48,14 @@ class Solution2 {
             return max-1;
         }
 
+        // 当简化后的数组元素个数小于4的时候，全部元素相加即可
         if(list.size() < 4){
             for(Integer k: list){
                 max += k;
             }
             return max;
         }
+        // 简化数组任意三个相加，取任意联系三个的最大值
         for(int j = 0; j < list.size(); j++){
             if(j+2 > list.size()-1){
                 return max;
