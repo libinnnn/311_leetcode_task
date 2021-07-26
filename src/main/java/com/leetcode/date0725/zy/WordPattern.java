@@ -31,7 +31,6 @@ public class WordPattern {
         System.out.println(wordPattern(pattern1,str1));
         System.out.println(wordPattern(pattern2,str2));
         System.out.println(wordPattern(pattern3,str3));
-
     }
 
     public static boolean wordPattern(String pattern,String s){
