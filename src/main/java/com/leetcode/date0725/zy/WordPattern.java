@@ -5,9 +5,7 @@ package com.leetcode.date0725.zy;
  * @date 2021-07-23
  */
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,24 +36,20 @@ public class WordPattern {
 
     public static boolean wordPattern(String pattern,String s){
         String[] strArry = s.split(" ");
-        String[] patArry = pattern.split("");
-        if(strArry.length != patArry.length) return false;
-        Map<String,String> mapPat = new HashMap<String,String>();
-        Map<String,String> mapStr = new HashMap<String,String>();
-        for(int i = 0; i< patArry.length;i++){
-            if(mapPat.containsKey(patArry[i])){
-                if(!strArry[i].equals(mapPat.get(patArry[i]))){
+//        String[] patArry = pattern.split("");
+        if(strArry.length != pattern.length()) return false;
+        HashMap mapPat = new HashMap();
+//        Map<String,String> mapStr = new HashMap<String,String>();
+        for(int i = 0; i< strArry.length;i++){
+            if(mapPat.containsKey(pattern.charAt(i))){
+                if(!strArry[i].equals(mapPat.get(pattern.charAt(i)))){
                     return false;
                 }
             }else{
-                mapPat.put(patArry[i],strArry[i]);
-            }
-            if(mapStr.containsKey(strArry[i])){
-                if(!patArry[i].equals(mapStr.get(strArry[i]))){
+                if(mapPat.containsValue(strArry[i])){
                     return false;
                 }
-            }else{
-                mapStr.put(strArry[i],patArry[i]);
+                mapPat.put(pattern.charAt(i),strArry[i]);
             }
         }
         return true;
